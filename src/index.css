@@ -1,0 +1,70 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate-subtle-zoom {
+    animation: subtle-zoom 15s ease-in-out infinite; /* Reduced from 20s to 15s */
+  }
+  
+  .animate-pulse-glow-delayed {
+    animation: pulse-glow 2s ease-in-out infinite 0.5s; /* Reduced delay from 1s to 0.5s */
+  }
+  
+  .transition-smooth {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Reduced from 0.3s to 0.2s */
+  }
+  
+  .transition-smooth-slow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Reduced from 0.5s to 0.3s */
+  }
+}
+
+@keyframes subtle-zoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+}
+
+/* Ensure smooth transitions for all interactive elements */
+button, input, select, textarea {
+  @apply transition-smooth;
+}
+
+/* Smooth hover effects */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive breakpoint adjustments */
+@media (max-width: 768px) {
+  .transition-smooth {
+    transition: all 0.15s ease-in-out; /* Reduced from 0.2s to 0.15s */
+  }
+}
